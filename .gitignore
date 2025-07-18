@@ -1,0 +1,7 @@
+.DS_Store
+.claude
+compression-results/
+backup/
+
+# Ignore the huge uploads directory but not the rest of myapp
+myapp/oc-content/uploads/

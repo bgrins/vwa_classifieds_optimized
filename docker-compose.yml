@@ -1,0 +1,27 @@
+
+services:
+  web:
+    build:
+      context: .
+    image: ghcr.io/bgrins/vwa_classifieds_web:latest
+    ports:
+      - "9980:9980"
+    depends_on:
+      db:
+        condition: service_healthy
+    container_name: classifieds-optimized
+    environment:
+      - CLASSIFIEDS=http://127.0.0.1:9980/
+      - RESET_TOKEN=4b61655535e7ed388f0d40a93600254c
+  db:
+    build:
+      context: ./mysql-baked
+    image: ghcr.io/bgrins/vwa_classifieds_db:latest
+    restart: always
+    container_name: classifieds_db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+      start_period: 10s
