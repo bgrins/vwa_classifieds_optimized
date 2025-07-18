@@ -2,11 +2,11 @@
 
 An optimization for the [Visual Web Arena](https://arxiv.org/pdf/2401.13649) classified environment.
 
-The current environment is very large (78GB). Most of the space (~73GB) is from PNG files for classifieds
+The current environment is very large (78GB). Most of the space (~73 GB) is from PNG files for classifieds
 * 336,568 png images (84,142 uploads with 4 variations each).
 * 48 JPEGs (48, from 12 uploads with 4 variations each)
 
-By converting these to AVIF, we can optimize the uploads dir from 73G to 4.9G GB, and the container image from 77.8GB to 5.69GB. This repo also includes a few other improvements for reproducibility (with a preconfigured mysql container that reset to a known good state on startup).
+By converting these to AVIF, we can optimize the uploads dir from **73 GB** to **4.9G GB**, and the container image from 77.8 GB to 5.69 GB. This repo also includes a few other improvements for reproducibility (with a preconfigured mysql container that reset to a known good state on startup).
 
 ## Using the pre-built images
 
@@ -17,7 +17,7 @@ You can use `ghcr.io/bgrins/vwa_classifieds_web:latest` and `ghcr.io/bgrins/vwa_
 You shouldn't have to do these steps if you just want to run the environment. But if you want to customize, here are some tips to reproduce.
 
 * Follow [instructions here](https://github.com/web-arena-x/visualwebarena/tree/89f5af29305c3d1e9f97ce4421462060a70c9a03/environment_docker#classifieds-website) to pull the docker compose and SQL files.
-* `docker compose -f docker-compose.original.yml up -d` (slow, needs to download 70GB image)
+* `docker compose -f docker-compose.original.yml up -d` (slow, needs to download the full original image)
 * Sanity checks `docker ps -s | grep classifieds` -> `virtual 78.4GB`, `docker exec classifieds du -sh /usr/src/myapp/oc-content/uploads` -> `73G`, 
 * `./prepare-build.sh` (slow, copies all of the images onto host). This also removes a couple large log files from the original image (~50MB and 20MB respectively).
 * Make sure [libvips](https://www.libvips.org/) is installed on your machine
@@ -53,7 +53,6 @@ Test locally with:
 docker compose build
 docker compose up -d
 ```
-
 
 ```
 docker build -t ghcr.io/bgrins/vwa_classifieds_web:latest .
