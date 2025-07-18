@@ -1,6 +1,6 @@
 # Optimized VWA Classifieds
 
-An optimizationfor the [Visual Web Arena](https://arxiv.org/pdf/2401.13649) classified environment.
+An optimization for the [Visual Web Arena](https://arxiv.org/pdf/2401.13649) classified environment.
 
 The current environment is very large (78GB). Most of the space (~73GB) is from PNG files for classifieds
 * 336,568 png images (84,142 uploads with 4 variations each).
