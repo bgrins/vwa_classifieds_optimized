@@ -3,7 +3,7 @@
 An optimization for the [Visual Web Arena](https://arxiv.org/pdf/2401.13649) classified environment.
 
 The current environment is very large (78GB). Most of the space (~73 GB) is from PNG files for classifieds
-* 336,568 png images (84,142 uploads with 4 variations each).
+* 336,564 png images (84,141 uploads with 4 variations each).
 * 48 JPEGs (48, from 12 uploads with 4 variations each)
 
 By converting these to AVIF, we can optimize the uploads dir from **73 GB** to **4.9G GB**, and the container image from 77.8 GB to 5.69 GB. This repo also includes a few other improvements for reproducibility (with a preconfigured mysql container that reset to a known good state on startup).
@@ -22,7 +22,7 @@ You shouldn't have to do these steps if you just want to run the environment. Bu
 * `./prepare-build.sh` (slow, copies all of the images onto host). This also removes a couple large log files from the original image (~50MB and 20MB respectively).
 * Make sure [libvips](https://www.libvips.org/) is installed on your machine
 * `./convert.sh` (slow, converts to AVIF and removes the PNG).
-* Sanity checks: `find myapp/oc-content/uploads -name "*.avif" -type f | wc -l` -> `336613` and `find myapp/oc-content/uploads \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) -type f | wc -l` -> 3 (a few non user-uploaded)
+* Sanity checks: `find myapp/oc-content/uploads -name "*.avif" -type f | wc -l` -> `336613` and `find myapp/oc-content/uploads \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) -type f | wc -l` -> 3 (a few non user-uploaded assets)
 
 ## Update DB Paths
 * First, `docker exec classifieds_db mysqldump --no-tablespaces -u root osclass > mysql-baked/classifieds_import.sql && GIT_PAGER="less -S" git diff` to confirm there are not any meaningful changes.
@@ -58,8 +58,12 @@ docker compose up -d
 docker build -t ghcr.io/bgrins/vwa_classifieds_web:latest .
 docker build -t ghcr.io/bgrins/vwa_classifieds_db:latest ./mysql-baked
 
-echo $GITHUB_TOKEN | docker login ghcr.io -u bgrins --password-stdin
-
 docker push ghcr.io/bgrins/vwa_classifieds_web:latest
 docker push ghcr.io/bgrins/vwa_classifieds_db:latest
+
+docker tag ghcr.io/bgrins/vwa_classifieds_web:latest ghcr.io/bgrins/vwa_classifieds_web:1
+docker tag ghcr.io/bgrins/vwa_classifieds_db:latest ghcr.io/bgrins/vwa_classifieds_db:1
+
+docker push ghcr.io/bgrins/vwa_classifieds_web:1
+docker push ghcr.io/bgrins/vwa_classifieds_db:1
 ```

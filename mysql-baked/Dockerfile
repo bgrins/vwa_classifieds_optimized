@@ -24,8 +24,8 @@ RUN mysqld --initialize-insecure --user=mysql --datadir=/var/lib/mysql && \
     echo "MySQL started, loading data..." && \
     mysql -u root --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS osclass;" && \
     mysql -u root --socket=/tmp/mysql.sock osclass < /tmp/sql/classifieds_import.sql && \
-    # echo "Applying restore script..." && \
-    # mysql -u root --socket=/tmp/mysql.sock osclass < /tmp/sql/classifieds_restore.sql && \
+    echo "Applying restore script..." && \
+    mysql -u root --socket=/tmp/mysql.sock osclass < /tmp/sql/classifieds_restore.sql && \
     echo "Creating remote access for root user..." && \
     mysql -u root --socket=/tmp/mysql.sock -e "CREATE USER 'root'@'%' IDENTIFIED BY 'password'; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'; FLUSH PRIVILEGES;" && \
     echo "Data loaded, shutting down MySQL..." && \

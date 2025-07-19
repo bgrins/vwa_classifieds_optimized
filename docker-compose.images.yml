@@ -1,4 +1,3 @@
-
 services:
   web:
     image: ghcr.io/bgrins/vwa_classifieds_web:latest

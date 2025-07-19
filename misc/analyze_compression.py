@@ -130,24 +130,24 @@ def print_compressed_size_distributions(data):
 
 def print_top_savings(data, n=10):
     """Print files with top absolute space savings"""
-    print(f"=== TOP {n} FILES BY ABSOLUTE SPACE SAVINGS ===\n")
+    print(f"=== BEST {n} FILES BY ABSOLUTE SPACE SAVINGS ===\n")
     
     savings = []
     for row in data:
         if row['avif_size_bytes']:
             avif_saved = row['original_size_bytes'] - row['avif_size_bytes']
-            savings.append(('AVIF', row['original_path'], avif_saved, row['avif_compression_ratio']))
+            savings.append(('AVIF', row['original_path'], row['original_size_bytes'], avif_saved, row['avif_compression_ratio']))
     
-    savings.sort(key=lambda x: x[2], reverse=True)
+    savings.sort(key=lambda x: x[3], reverse=True)
     
-    for format_type, path, saved, ratio in savings[:n]:
+    for format_type, path, orig_size, saved, ratio in savings[:n]:
         filename = os.path.basename(path)
-        print(f"{format_type}: {filename} - saved {format_bytes(saved)} ({ratio:.2f}x compression)")
+        print(f"{format_type}: {filename} - {format_bytes(orig_size)} → saved {format_bytes(saved)} ({ratio:.2f}x compression)")
     print()
 
 def print_top_compression_ratios(data, n=10):
     """Print files with highest compression ratios"""
-    print(f"=== TOP {n} FILES BY COMPRESSION RATIO ===\n")
+    print(f"=== BEST {n} FILES BY COMPRESSION RATIO ===\n")
     
     ratios = []
     for row in data:
@@ -156,6 +156,23 @@ def print_top_compression_ratios(data, n=10):
                           row['avif_size_bytes'], row['avif_compression_ratio']))
     
     ratios.sort(key=lambda x: x[4], reverse=True)
+    
+    for format_type, path, orig_size, comp_size, ratio in ratios[:n]:
+        filename = os.path.basename(path)
+        print(f"{format_type}: {filename} - {format_bytes(orig_size)} → {format_bytes(comp_size)} ({ratio:.2f}x compression)")
+    print()
+
+def print_bottom_compression_ratios(data, n=10):
+    """Print files with lowest compression ratios"""
+    print(f"=== WORST {n} FILES BY COMPRESSION RATIO ===\n")
+    
+    ratios = []
+    for row in data:
+        if row['avif_compression_ratio']:
+            ratios.append(('AVIF', row['original_path'], row['original_size_bytes'], 
+                          row['avif_size_bytes'], row['avif_compression_ratio']))
+    
+    ratios.sort(key=lambda x: x[4])  # Sort ascending for bottom ratios
     
     for format_type, path, orig_size, comp_size, ratio in ratios[:n]:
         filename = os.path.basename(path)
@@ -206,11 +223,7 @@ def print_histogram(data, bins=20):
     print()
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python analyze_compression.py <csv_file>")
-        sys.exit(1)
-    
-    csv_file = sys.argv[1]
+    csv_file = 'misc/image_metadata.csv'
     if not os.path.exists(csv_file):
         print(f"Error: File '{csv_file}' not found")
         sys.exit(1)
@@ -225,6 +238,7 @@ def main():
     print_compressed_size_distributions(data)
     print_top_savings(data)
     print_top_compression_ratios(data)
+    print_bottom_compression_ratios(data)
     print_histogram(data)
 
 if __name__ == "__main__":
