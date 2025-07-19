@@ -1,18 +1,18 @@
 <?php
 // MySql database host
-define('DB_HOST', 'db');
+define('DB_HOST', getenv('DB_HOST') ?: 'db');
 
 // MySql database username
-define('DB_USER', 'root');
+define('DB_USER', getenv('DB_USER') ?: 'root');
 
 // MySql database password
-define('DB_PASSWORD', 'password');
+define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'password');
 
 // MySql database name
-define('DB_NAME', 'osclass');
+define('DB_NAME', getenv('DB_NAME') ?: 'osclass');
 
 // MySql database table prefix
-define('DB_TABLE_PREFIX', 'oc_');
+define('DB_TABLE_PREFIX', getenv('DB_TABLE_PREFIX') ?: 'oc_');
 
 // Relative web url
 define('REL_WEB_URL', '/');
