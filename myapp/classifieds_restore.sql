@@ -35,6 +35,7 @@ DELETE FROM `oc_t_user`;
 /*!40000 ALTER TABLE `oc_t_user` DISABLE KEYS */;
 UNLOCK TABLES;
 
+
 --
 -- Dumping data for table `oc_t_user`
 --
@@ -94,18 +95,18 @@ LOCK TABLES `oc_t_item_resource` WRITE;
 /*!40000 ALTER TABLE `oc_t_item_resource` DISABLE KEYS */;
 -- DELETE FROM `oc_t_item_resource` WHERE pk_i_id IN (84143, 84144, 84145, 84146, 84147, 84148, 84149, 84150, 84151, 84152, 84153, 84154);
 INSERT INTO `oc_t_item_resource` VALUES 
-(84143,84143,'GOBTUniq','jpg','image/jpeg','oc-content/uploads/841/'),
-(84144,84144,'CmMosAZu','jpg','image/jpeg','oc-content/uploads/841/'),
-(84145,84145,'0CDGt7oz','jpg','image/jpeg','oc-content/uploads/841/'),
-(84146,84146,'ocWoBHVt','jpg','image/jpeg','oc-content/uploads/841/'),
-(84147,84147,'L4rvdckS','jpg','image/jpeg','oc-content/uploads/841/'),
-(84148,84148,'3qIONABh','jpg','image/jpeg','oc-content/uploads/841/'),
-(84149,84149,'YWIUjAtd','jpg','image/jpeg','oc-content/uploads/841/'),
-(84150,84150,'apLyFw2n','jpg','image/jpeg','oc-content/uploads/841/'),
-(84151,84151,'6iVB6WNW','jpg','image/jpeg','oc-content/uploads/841/'),
-(84152,84152,'VkTAcMhb','jpg','image/jpeg','oc-content/uploads/841/'),
-(84153,84153,'qzFNpL2p','jpg','image/jpeg','oc-content/uploads/841/'),
-(84154,84154,'MvQy8UWD','jpg','image/jpeg','oc-content/uploads/841/');
+(84143,84143,'GOBTUniq','avif','image/avif','oc-content/uploads/841/'),
+(84144,84144,'CmMosAZu','avif','image/avif','oc-content/uploads/841/'),
+(84145,84145,'0CDGt7oz','avif','image/avif','oc-content/uploads/841/'),
+(84146,84146,'ocWoBHVt','avif','image/avif','oc-content/uploads/841/'),
+(84147,84147,'L4rvdckS','avif','image/avif','oc-content/uploads/841/'),
+(84148,84148,'3qIONABh','avif','image/avif','oc-content/uploads/841/'),
+(84149,84149,'YWIUjAtd','avif','image/avif','oc-content/uploads/841/'),
+(84150,84150,'apLyFw2n','avif','image/avif','oc-content/uploads/841/'),
+(84151,84151,'6iVB6WNW','avif','image/avif','oc-content/uploads/841/'),
+(84152,84152,'VkTAcMhb','avif','image/avif','oc-content/uploads/841/'),
+(84153,84153,'qzFNpL2p','avif','image/avif','oc-content/uploads/841/'),
+(84154,84154,'MvQy8UWD','avif','image/avif','oc-content/uploads/841/');
 /*!40000 ALTER TABLE `oc_t_item_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,4 +179,3 @@ INSERT INTO `oc_t_log` VALUES ('2023-11-02 02:54:53','item','add',84142,'Test po
 ('2023-11-15 23:14:43','item','add',84154,'Compact Canister Vacuum Cleaner - Lightweight and Powerful','74.111.186.31','user',1);
 /*!40000 ALTER TABLE `oc_t_log` ENABLE KEYS */;
 UNLOCK TABLES;
-
