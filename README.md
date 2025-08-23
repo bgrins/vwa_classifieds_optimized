@@ -55,15 +55,5 @@ docker compose up -d
 ```
 
 ```
-docker build -t ghcr.io/bgrins/vwa_classifieds_web:latest .
-docker build -t ghcr.io/bgrins/vwa_classifieds_db:latest ./mysql-baked
-
-docker push ghcr.io/bgrins/vwa_classifieds_web:latest
-docker push ghcr.io/bgrins/vwa_classifieds_db:latest
-
-docker tag ghcr.io/bgrins/vwa_classifieds_web:latest ghcr.io/bgrins/vwa_classifieds_web:1
-docker tag ghcr.io/bgrins/vwa_classifieds_db:latest ghcr.io/bgrins/vwa_classifieds_db:1
-
-docker push ghcr.io/bgrins/vwa_classifieds_web:1
-docker push ghcr.io/bgrins/vwa_classifieds_db:1
+./build-multiplatform.sh
 ```
