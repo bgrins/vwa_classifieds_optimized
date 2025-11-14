@@ -1,0 +1,6 @@
+myapp.backup
+myapp_*
+misc
+.DS_Store
+README.md
+scripts
