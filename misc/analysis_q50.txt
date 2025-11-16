@@ -1,0 +1,101 @@
+Loading data from misc/image_metadata_myapp_q50.csv...
+Loaded 336,612 records
+
+=== COMPRESSION SUMMARY ===
+
+Total PNG files analyzed: 336,612
+Files with AVIF: 336,612 (100.0%)
+
+Total original size: 71.36 GB
+Total AVIF size: 4.22 GB
+AVIF space saved: 67.14 GB (94.1%)
+
+=== COMPRESSION RATIO STATISTICS ===
+
+AVIF Compression Ratios:
+  Mean: 19.27x
+  Median: 17.95x
+  Min: 1.54x
+  Max: 84.86x
+  Std Dev: 6.78
+
+=== ORIGINAL FILE SIZE DISTRIBUTION ===
+
+     0-10 KB:      113 files (  0.0%)
+    10-50 KB:   11,710 files (  3.5%)
+   50-100 KB:   77,268 files ( 23.0%)
+  100-500 KB:  234,064 files ( 69.5%)
+   500KB-1MB:   13,457 files (  4.0%)
+
+=== AVIF FILE SIZE DISTRIBUTION ===
+
+     0-10 KB:  170,590 files ( 50.7%)
+    10-50 KB:  162,377 files ( 48.2%)
+   50-100 KB:    3,636 files (  1.1%)
+  100-500 KB:        9 files (  0.0%)
+
+=== BEST 10 FILES BY ABSOLUTE SPACE SAVINGS ===
+
+AVIF: 8460.png - 804.34 KB → saved 713.19 KB (8.82x compression)
+AVIF: 73539.png - 806.89 KB → saved 712.76 KB (8.57x compression)
+AVIF: 29855.png - 806.89 KB → saved 712.76 KB (8.57x compression)
+AVIF: 73964.png - 806.89 KB → saved 712.76 KB (8.57x compression)
+AVIF: 27204.png - 791.65 KB → saved 705.29 KB (9.17x compression)
+AVIF: 55955.png - 797.57 KB → saved 704.00 KB (8.52x compression)
+AVIF: 1743.png - 794.77 KB → saved 703.46 KB (8.70x compression)
+AVIF: 81458.png - 796.68 KB → saved 701.72 KB (8.39x compression)
+AVIF: 73019.png - 794.92 KB → saved 699.57 KB (8.34x compression)
+AVIF: 60376.png - 802.78 KB → saved 699.52 KB (7.77x compression)
+
+=== BEST 10 FILES BY COMPRESSION RATIO ===
+
+AVIF: 65885.png - 131.10 KB → 1.54 KB (84.86x compression)
+AVIF: 73976.png - 149.40 KB → 1.76 KB (84.85x compression)
+AVIF: 50581.png - 174.40 KB → 2.15 KB (81.29x compression)
+AVIF: 33699.png - 203.29 KB → 2.51 KB (80.97x compression)
+AVIF: 15820.png - 136.12 KB → 1.68 KB (80.85x compression)
+AVIF: 31731.png - 144.10 KB → 1.82 KB (79.12x compression)
+AVIF: 39368.png - 233.39 KB → 2.98 KB (78.38x compression)
+AVIF: 75187.png - 142.86 KB → 1.87 KB (76.47x compression)
+AVIF: 41166.png - 189.31 KB → 2.48 KB (76.35x compression)
+AVIF: 51041.png - 189.31 KB → 2.48 KB (76.35x compression)
+
+=== WORST 10 FILES BY COMPRESSION RATIO ===
+
+AVIF: 84145_thumbnail.jpg - 14.81 KB → 9.65 KB (1.54x compression)
+AVIF: 84147_original.jpg - 184.44 KB → 111.95 KB (1.65x compression)
+AVIF: 84146_thumbnail.jpg - 13.73 KB → 8.15 KB (1.69x compression)
+AVIF: 84145_preview.jpg - 42.69 KB → 25.12 KB (1.70x compression)
+AVIF: 84145.jpg - 76.21 KB → 44.62 KB (1.71x compression)
+AVIF: 84147.jpg - 64.89 KB → 37.07 KB (1.75x compression)
+AVIF: 84147_thumbnail.jpg - 11.14 KB → 6.31 KB (1.76x compression)
+AVIF: 84152_thumbnail.jpg - 10.92 KB → 5.87 KB (1.86x compression)
+AVIF: 84146.jpg - 69.06 KB → 37.15 KB (1.86x compression)
+AVIF: 84146_preview.jpg - 37.96 KB → 20.37 KB (1.86x compression)
+
+=== COMPRESSION RATIO HISTOGRAM ===
+
+AVIF Distribution:
+1.5-5.7x:                                                 50
+5.7-9.9x:    ██                                        6,341
+9.9-14.0x:   █████████████████████████████            71,582
+14.0-18.2x:  ████████████████████████████████████████ 95,663
+18.2-22.4x:  ██████████████████████████████           73,006
+22.4-26.5x:  ██████████████████                       43,824
+26.5-30.7x:  ██████████                               24,033
+30.7-34.9x:  █████                                    12,139
+34.9-39.0x:  ██                                        5,584
+39.0-43.2x:  █                                         2,414
+43.2-47.4x:                                            1,071
+47.4-51.5x:                                              445
+51.5-55.7x:                                              245
+55.7-59.9x:                                              107
+59.9-64.0x:                                               52
+64.0-68.2x:                                               32
+68.2-72.4x:                                                7
+72.4-76.5x:                                               10
+76.5-80.7x:                                                2
+80.7-84.9x:                                                5
+
+Total files: 336,612
+

@@ -182,56 +182,69 @@ def print_bottom_compression_ratios(data, n=10):
 def print_histogram(data, bins=20):
     """Print ASCII histogram of compression ratios"""
     print("=== COMPRESSION RATIO HISTOGRAM ===\n")
-    
+
     avif_ratios = [row['avif_compression_ratio'] for row in data if row['avif_compression_ratio']]
-    
+
     if not avif_ratios:
         print("No AVIF data to display")
         return
-    
+
     min_ratio = min(avif_ratios)
     max_ratio = max(avif_ratios)
     bin_width = (max_ratio - min_ratio) / bins
-    
+
     histogram = defaultdict(int)
-    
+
     for ratio in avif_ratios:
         bin_idx = int((ratio - min_ratio) / bin_width)
         bin_idx = min(bin_idx, bins - 1)
         histogram[bin_idx] += 1
-    
+
     max_count = max(histogram.values())
     bar_width = 40
-    
+
+    # Calculate width needed for ratio labels (e.g., "113.5-119.4x")
+    # Width = len(str(int(max_ratio))) for each number + 3 for decimal + dash + x + colon + space
+    max_ratio_width = len(f"{max_ratio:.1f}")
+    label_width = max_ratio_width * 2 + 4  # "XXX.X-XXX.Xx: "
+
     print("AVIF Distribution:")
-    
+
     for i in range(bins):
         bin_start = min_ratio + i * bin_width
         bin_end = bin_start + bin_width
         count = histogram[i]
         bar_length = int(count / max_count * bar_width) if max_count > 0 else 0
         bar = '█' * bar_length
-        
-        # Format the range label
+
+        # Format the range label with dynamic width
         if i == bins - 1 and bin_end < max_ratio:
             # Last bin might contain values up to max_ratio
-            print(f"{bin_start:4.1f}-{max_ratio:4.1f}x: {bar:<{bar_width}} {count:6,}")
+            label = f"{bin_start:.1f}-{max_ratio:.1f}x:"
         else:
-            print(f"{bin_start:4.1f}-{bin_end:4.1f}x: {bar:<{bar_width}} {count:6,}")
-    
-    print(f"Total files: {len(avif_ratios):,}")
+            label = f"{bin_start:.1f}-{bin_end:.1f}x:"
+
+        print(f"{label:<{label_width}} {bar:<{bar_width}} {count:6,}")
+
+    print(f"\nTotal files: {len(avif_ratios):,}")
     print()
 
 def main():
-    csv_file = 'misc/image_metadata.csv'
+    if len(sys.argv) > 1:
+        csv_file = sys.argv[1]
+    else:
+        csv_file = 'misc/image_metadata.csv'
+
     if not os.path.exists(csv_file):
         print(f"Error: File '{csv_file}' not found")
+        print(f"Usage: {sys.argv[0]} [csv_file]")
+        print(f"Example: {sys.argv[0]} misc/image_metadata_myapp_q40.csv")
         sys.exit(1)
-    
+
     print(f"Loading data from {csv_file}...")
     data = load_data(csv_file)
     print(f"Loaded {len(data):,} records\n")
-    
+
     print_summary_stats(data)
     print_compression_stats(data)
     print_size_distribution(data)
